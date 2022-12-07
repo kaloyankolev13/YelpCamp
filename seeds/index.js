@@ -22,10 +22,12 @@ const seedDB = async () => {
     let random1000 = Math.floor(Math.random() * 1000);
     const campgroundSeed = new Campground({
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
-      title: `${sample(descriptors)}, ${sample(places)}`,
+      title: `${sample(descriptors)} ${sample(places)}`,
     });
     await campgroundSeed.save();
   }
 };
 
-seedDB();
+seedDB().then(() => {
+  mongoose.connection.close();
+});

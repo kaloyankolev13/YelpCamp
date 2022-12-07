@@ -21,6 +21,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req, res) => {
   res.render('home');
 });
+app.get('/campgrounds', async (req, res) => {
+  const campgrounds = await Campground.find({});
+  res.render('campgrounds/index', { campgrounds });
+});
+
+// for single campground
+app.get('/campgrounds/:id', async (req, res) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+  res.render('campgrounds/show', { campground });
+});
 
 app.get('/makecampground', async (req, res) => {
   const camp = new Campground({
