@@ -1,30 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Show</title>
-  </head>
-  <body>
-    <h1><%= campground.title %></h1>
-    <p><%= campground.location %></p>
-    <p><%= campground.description %></p>
-    <p><%= campground.price %></p>
-    <p><%= campground.image %></p>
-    <p><%= campground.createdAt %></p>
-    <p><%= campground.updatedAt %></p>
+<% layout('./layouts/boilerplate') %>
 
-    <a href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-    <form
-      action="/campgrounds/<%= campground._id %>?_method=DELETE"
-      method="POST"
-    >
-      <input type="submit" value="Delete" />
-    </form>
+<h1><%= campground.title %></h1>
+<p><%= campground.location %></p>
+<p><%= campground.description %></p>
+<p><%= campground.price %></p>
+<p><%= campground.image %></p>
+<p><%= campground.createdAt %></p>
+<p><%= campground.updatedAt %></p>
 
-    <footer>
-      <a href="/campgrounds">Back to all campgrounds</a>
-    </footer>
-  </body>
-</html>
+<a href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+<form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+  <input type="submit" value="Delete" />
+</form>
+
+<footer>
+  <a href="/campgrounds">Back to all campgrounds</a>
+</footer>
