@@ -34,7 +34,11 @@
         <p>2 days ago</p>
       </div>
     </div>
-    <form class="mb-3" action="">
+    <form
+      class="mb-3"
+      action="/campgrounds/<%=campground._id%>/reviews"
+      method="POST"
+    >
       <h2>Leave a Review</h2>
       <div class="mb-3">
         <label class="form-label" for="rating">Rating</label>
