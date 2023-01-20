@@ -10,8 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
-const cammpgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const cammpgroundRoutes = require('./routes/campgrounds');
+const reviewRoutes = require('./routes/reviews');
+const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
   useNewUrlParser: true,
@@ -59,14 +60,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/fakeuser', async (req, res) => {
-  const user = new User({ email: 'kaloyan@abv.bg', username: 'Kaloyan' });
-  const newUser = await User.register(user, 'monkey');
-  res.send(newUser);
-});
-
-app.use('/campgrounds', cammpgrounds);
-app.use('/campgrounds/:id/reviews', reviews);
+app.use('/campgrounds', cammpgroundRoutes);
+app.use('/campgrounds/:id/reviews', reviewRoutes);
+app.use('/', userRoutes);
 
 app.get('/', (req, res) => {
   res.render('home');
