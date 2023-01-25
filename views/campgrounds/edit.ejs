@@ -67,7 +67,6 @@
           value="<%= campground.description %>"
           required
         >
-        
 <%= campground.description %></textarea
         >
         <div class="valid-feedback">Looks good!</div>
@@ -89,7 +88,7 @@
       </div>
       <div class="mb-3">
         <% campground.images.forEach(function(image,i){ %>
-        <img src="<%= image.url %> " class="img-thumbnail" alt="" />
+        <img src="<%= image.thumbnail %> " class="img-thumbnail" alt="" />
         <div class="form-check-inline">
           <input
             type="checkbox"
